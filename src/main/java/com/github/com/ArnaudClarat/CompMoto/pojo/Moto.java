@@ -112,6 +112,12 @@ public class Moto {
         BigDecimal noteAutonomie = (this.autonomie.subtract(BigDecimal.valueOf(200))).divide(BigDecimal.valueOf(10)); // Coté sur 40 (Meilleur = 600/Pire = 200)
         BigDecimal notePrix = (this.prix.subtract(BigDecimal.valueOf(1000))).divide(BigDecimal.valueOf(160)); //Coté sur 25 (Meilleur = 1000/Pire = 5000)
         BigDecimal notePerso = this.notePerso.multiply(BigDecimal.valueOf(0.9)); //Coté sur 90 (Meilleur = 100/Pire = 0)
-        this.noteTotale = notePuissance.add(noteConso.add(noteReserv.add(noteAutonomie.add(notePrix.add(notePerso))))).divide(BigDecimal.valueOf(2));
+        this.noteTotale = notePuissance
+                .add(noteConso)
+                .add(noteReserv)
+                .add(noteAutonomie)
+                .add(notePrix)
+                .add(notePerso)
+                .divide(BigDecimal.valueOf(2));
     }
 }
