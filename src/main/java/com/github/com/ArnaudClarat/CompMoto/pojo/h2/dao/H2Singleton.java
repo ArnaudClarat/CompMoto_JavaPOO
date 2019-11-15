@@ -1,4 +1,4 @@
-package com.github.com.ArnaudClarat.CompMoto.pojo.h2;
+package com.github.com.ArnaudClarat.CompMoto.pojo.h2.dao;
 
 import org.h2.jdbcx.JdbcDataSource;
 import java.sql.Connection;
@@ -14,7 +14,7 @@ public class H2Singleton {
     public static final String PASS = "";
 
 
-    private static Connection getInstance() throws SQLException {
+    public static Connection getInstance() throws SQLException {
         if (connection == null) {
             // DB CONNECTION
             source = new JdbcDataSource();
@@ -28,13 +28,14 @@ public class H2Singleton {
                 source.setUser(USER);
                 source.setPassword(PASS);
                 connection = source.getConnection();
+                createDB();
             }
         }
         return connection;
     }
 
     private static void createDB() {
-        try (Statement statement = getInstance().createStatement()) {
+        try {
             createMarqueTable();
             createMotoTable();
         } catch (SQLException e) {
