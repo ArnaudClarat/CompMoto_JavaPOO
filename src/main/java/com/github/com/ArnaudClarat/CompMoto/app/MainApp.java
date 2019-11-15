@@ -21,16 +21,16 @@ public class MainApp {
             System.out.println(menu);
             choice = scanner.nextLine();
             if (choice.equals("1")){
-
+                // TODO Créer newMoto()
             }
             if (choice.equals("2")){
-
+                // TODO Créer showMoto()
             }
             if (choice.equals("3")){
-
+                // TODO Créer removeMoto()
             }
             if (choice.equals("4")){
-
+                // TODO Créer bestMoto()
             }
         }
     }

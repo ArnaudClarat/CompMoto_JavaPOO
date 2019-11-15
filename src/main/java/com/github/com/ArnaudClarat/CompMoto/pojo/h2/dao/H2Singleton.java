@@ -7,7 +7,6 @@ import java.sql.Statement;
 
 public class H2Singleton {
     private static Connection connection;
-    private static JdbcDataSource source;
 
     public static final String URL = "jdbc:h2:file:~/data/moto";
     public static final String USER = "SA";
@@ -17,7 +16,7 @@ public class H2Singleton {
     public static Connection getInstance() throws SQLException {
         if (connection == null) {
             // DB CONNECTION
-            source = new JdbcDataSource();
+            JdbcDataSource source = new JdbcDataSource();
             try {
                 source.setURL(URL + ";IFEXISTS=TRUE");
                 source.setUser(USER);
