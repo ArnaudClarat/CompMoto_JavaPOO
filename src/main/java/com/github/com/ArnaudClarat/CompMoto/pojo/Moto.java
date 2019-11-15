@@ -1,29 +1,31 @@
 package com.github.com.ArnaudClarat.CompMoto.pojo;
 
+import java.math.BigDecimal;
+
 public class Moto {
     private Marque marque;
     private String modele;
-    private double puissance;
-    private double conso;
-    private double reserv;
-    private double autonomie;
-    private double prix;
-    private double notePerso;
-    private double noteTotale;
+    private BigDecimal puissance;
+    private BigDecimal conso;
+    private BigDecimal reserv;
+    private BigDecimal autonomie;
+    private BigDecimal prix;
+    private BigDecimal notePerso;
+    private BigDecimal noteTotale;
 
-    public Moto(Marque marque, String modele, double puissance, double conso, double reserv, double prix, double notePerso) {
+    public Moto(Marque marque, String modele, BigDecimal puissance, BigDecimal conso, BigDecimal reserv, BigDecimal prix, BigDecimal notePerso) {
         this.marque = marque;
         this.modele = modele;
         this.puissance = puissance;
         this.conso = conso;
         this.reserv = reserv;
-        this.autonomie = this.reserv/this.conso*100;
+        this.autonomie = this.reserv.multiply(BigDecimal.valueOf(100)).divide(this.conso);
         this.prix = prix;
         this.notePerso = notePerso;
         setNoteTotale();
     }
 
-    public Moto(Marque marque, String modele, double puissance, double conso, double reserv, double autonomie, double prix, double notePerso) {
+    public Moto(Marque marque, String modele, BigDecimal puissance, BigDecimal conso, BigDecimal reserv, BigDecimal autonomie, BigDecimal prix, BigDecimal notePerso) {
         this.marque = marque;
         this.modele = modele;
         this.puissance = puissance;
@@ -51,65 +53,65 @@ public class Moto {
         this.modele = modele;
     }
 
-    public double getPuissance() {
+    public BigDecimal getPuissance() {
         return puissance;
     }
 
-    public void setPuissance(double puissance) {
+    public void setPuissance(BigDecimal puissance) {
         this.puissance = puissance;
     }
 
-    public double getConso() {
+    public BigDecimal getConso() {
         return conso;
     }
 
-    public void setConso(double conso) {
+    public void setConso(BigDecimal conso) {
         this.conso = conso;
     }
 
-    public double getReserv() {
+    public BigDecimal getReserv() {
         return reserv;
     }
 
-    public void setReserv(double reserv) {
+    public void setReserv(BigDecimal reserv) {
         this.reserv = reserv;
     }
 
-    public double getAutonomie() {
+    public BigDecimal getAutonomie() {
         return autonomie;
     }
 
-    public void setAutonomie(double autonomie) {
+    public void setAutonomie(BigDecimal autonomie) {
         this.autonomie = autonomie;
     }
 
-    public double getPrix() {
+    public BigDecimal getPrix() {
         return prix;
     }
 
-    public void setPrix(double prix) {
+    public void setPrix(BigDecimal prix) {
         this.prix = prix;
     }
 
-    public double getNotePerso() {
+    public BigDecimal getNotePerso() {
         return notePerso;
     }
 
-    public void setNotePerso(double notePerso) {
+    public void setNotePerso(BigDecimal notePerso) {
         this.notePerso = notePerso;
     }
 
-    public double getNoteTotale() {
+    public BigDecimal getNoteTotale() {
         return noteTotale;
     }
 
     private void setNoteTotale() {
-        double notePuissance = this.puissance - 20; // Coté sur 15 (Meilleur = 35/Pire = 20)
-        double noteConso = (this.conso - 2) * 5; // Coté sur 20 (Meilleur = 2/Pire = 6)
-        double noteReserv = (this.reserv - 5) * 0.5d; // Coté sur 10 (Meilleur = 25/Pire = 5)
-        double noteAutonomie = (this.autonomie - 200) / 10; // Coté sur 40 (Meilleur = 600/Pire = 200)
-        double notePrix = (this.prix - 100) / 160; //Coté sur 25 (Meilleur = 1000/Pire = 5000)
-        double noteNPerso = this.notePerso * 0.9d; //Coté sur 90 (Meilleur = 100/Pire = 0)
-        this.noteTotale = (notePuissance + noteConso + noteReserv + noteAutonomie + notePrix + noteNPerso) / 2;
+        BigDecimal notePuissance = this.puissance.subtract(BigDecimal.valueOf(20)); // Coté sur 15 (Meilleur = 35/Pire = 20)
+        BigDecimal noteConso = (this.conso.subtract(BigDecimal.valueOf(2))).multiply(BigDecimal.valueOf(5)); // Coté sur 20 (Meilleur = 2/Pire = 6)
+        BigDecimal noteReserv = (this.reserv.subtract(BigDecimal.valueOf(5))).divide(BigDecimal.valueOf(2)); // Coté sur 10 (Meilleur = 25/Pire = 5)
+        BigDecimal noteAutonomie = (this.autonomie.subtract(BigDecimal.valueOf(200))).divide(BigDecimal.valueOf(10)); // Coté sur 40 (Meilleur = 600/Pire = 200)
+        BigDecimal notePrix = (this.prix.subtract(BigDecimal.valueOf(1000))).divide(BigDecimal.valueOf(160)); //Coté sur 25 (Meilleur = 1000/Pire = 5000)
+        BigDecimal notePerso = this.notePerso.multiply(BigDecimal.valueOf(0.9)); //Coté sur 90 (Meilleur = 100/Pire = 0)
+        this.noteTotale = notePuissance.add(noteConso.add(noteReserv.add(noteAutonomie.add(notePrix.add(notePerso))))).divide(BigDecimal.valueOf(2));
     }
 }
