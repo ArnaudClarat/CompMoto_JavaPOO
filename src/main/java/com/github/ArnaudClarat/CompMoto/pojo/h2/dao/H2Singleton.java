@@ -1,4 +1,4 @@
-package com.github.com.ArnaudClarat.CompMoto.pojo.h2.dao;
+package com.github.ArnaudClarat.CompMoto.pojo.h2.dao;
 
 import org.h2.jdbcx.JdbcDataSource;
 import java.sql.Connection;

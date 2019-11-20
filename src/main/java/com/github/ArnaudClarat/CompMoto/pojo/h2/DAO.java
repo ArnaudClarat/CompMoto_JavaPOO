@@ -1,4 +1,4 @@
-package com.github.com.ArnaudClarat.CompMoto.pojo.h2;
+package com.github.ArnaudClarat.CompMoto.pojo.h2;
 
 import java.util.Collection;
 

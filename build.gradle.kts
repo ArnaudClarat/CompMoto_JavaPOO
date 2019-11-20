@@ -19,3 +19,8 @@ dependencies {
 configure<JavaPluginConvention> {
     sourceCompatibility = JavaVersion.VERSION_1_8
 }
+
+application {
+    //Configuration de l’application. Utile pour la tâche "run"
+    mainClassName = "com.github.ArnaudClarat.CompMoto.app.MainApp" //à remplacer!
+}

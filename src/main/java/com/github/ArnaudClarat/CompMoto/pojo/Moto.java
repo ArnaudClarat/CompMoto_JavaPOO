@@ -1,4 +1,4 @@
-package com.github.com.ArnaudClarat.CompMoto.pojo;
+package com.github.ArnaudClarat.CompMoto.pojo;
 
 import java.math.BigDecimal;
 
