@@ -1,16 +1,23 @@
 package com.github.ArnaudClarat.CompMoto.app;
 
+import com.github.ArnaudClarat.CompMoto.pojo.Marque;
+import com.github.ArnaudClarat.CompMoto.pojo.Moto;
+import com.github.ArnaudClarat.CompMoto.pojo.MotosManager;
+
+import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class MainApp {
     public static void main(String[] args) {
-        String choice = menu();
+        String choice;
         do {
+            choice = menu();
             if (choice.equals("1")){
-                // TODO Créer newMoto()
+                newMoto();
             }
             if (choice.equals("2")){
-                // TODO Créer showMoto()
+                showMoto();
             }
             if (choice.equals("3")){
                 // TODO Créer removeMoto()
@@ -18,21 +25,68 @@ public class MainApp {
             if (choice.equals("4")){
                 // TODO Créer bestMoto()
             }
-            menu();
         } while (!choice.equals("Q"));
     }
 
+    private static void showMoto() {
+        String choice = "a";
+        while (Arrays.asList("a","b","c").contains(choice)) {
+            System.out.println(MotosManager.toString2());
+            System.out.println("Selectionner une moto ");
+            Scanner scanner = new Scanner(System.in);
+            choice = scanner.nextLine();
+        }
+    }
+
+    private static void newMoto() { // TODO Ajouter verification
+        System.out.println("Marque? ");
+        Scanner scanner = new Scanner(System.in);
+        String tMarque = scanner.nextLine();
+        while (!Marque.contains(tMarque)) {
+            System.out.print("La tMarque n'est pas correcte ");
+            tMarque = scanner.nextLine();
+        }
+        Marque marque = Marque.getMarque(tMarque);
+
+
+        System.out.println("Modèle? ");
+        String modele = scanner.nextLine();
+
+        System.out.println("Puissance? en kW");
+        String tPuissance = scanner.nextLine();
+        BigDecimal puissance = new BigDecimal(tPuissance);
+
+        System.out.println("Consomation? en l/100km");
+        String tConso = scanner.nextLine();
+        BigDecimal conso = new BigDecimal(tConso);
+
+
+        System.out.println("Taille de reservoir? en l");
+        String tReserv = scanner.nextLine();
+        BigDecimal reserv = new BigDecimal(tReserv);
+
+        System.out.println("Prix? ");
+        String tPrix = scanner.nextLine();
+        BigDecimal prix = new BigDecimal(tPrix);
+
+        System.out.println("Note Personnelle? ");
+        String tNotePerso = scanner.nextLine();
+        BigDecimal notePerso = new BigDecimal(tNotePerso);
+
+        Moto newMoto = new Moto(marque, modele, puissance, conso, reserv, prix, notePerso);
+        MotosManager.addMoto(newMoto);
+    }
+
     private static String menu(){
-        String menu = "\t\tMenu :  " +
+        String menu = "\n\t\tMenu :  " +
                 "\n\t\t\t1 = Ajouter une moto" +
                 "\n\t\t\t2 = Afficher une moto" +
                 "\n\t\t\t3 = Supprimer une moto" +
                 "\n\t\t\t4 = Afficher la meilleure moto" +
                 "\n\t\t\tQ = Quitter le programme" +
-                '\n'  +
-                "\n\t\tQue voulez-vous faire? ";
+                "\n\n\t\tQue voulez-vous faire? ";
+        System.out.println(menu);
         Scanner scanner = new Scanner(System.in);
-        System.out.print(menu);
-        return scanner.next();
+        return scanner.nextLine().toUpperCase();
     }
 }

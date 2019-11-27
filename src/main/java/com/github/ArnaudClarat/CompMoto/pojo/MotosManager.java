@@ -4,12 +4,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class MotosManager {
-    private Set<Moto> motos = new HashSet<>();
-    
-    public boolean addMoto(Moto moto){
+    private static Set<Moto> motos = new HashSet<>();
+
+    public static boolean addMoto(Moto moto){
         return motos.add(moto);
     }
-    
+
     public boolean containsMoto(Moto moto){
         return motos.contains(moto);
     }
@@ -43,7 +43,15 @@ public class MotosManager {
         }
     }
 
-    public Set<Moto> getMotos(){
+    public static Set<Moto> getMotos(){
         return motos;
+    }
+
+    public static String toString2() {
+        StringBuilder string = new StringBuilder();
+        for (Moto moto : MotosManager.motos) {
+            string.append("\n").append(moto.getMarque()).append(" ").append(moto.getModele()).append(" - ").append(moto.getNoteTotale());
+        }
+        return string.toString();
     }
 }

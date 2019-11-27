@@ -19,7 +19,7 @@ public class Moto {
         this.puissance = puissance;
         this.conso = conso;
         this.reserv = reserv;
-        this.autonomie = this.reserv.multiply(BigDecimal.valueOf(100)).divide(this.conso);
+        this.autonomie = this.reserv.multiply(BigDecimal.valueOf(100)).divide(this.conso, 2);
         this.prix = prix;
         this.notePerso = notePerso;
         setNoteTotale();
