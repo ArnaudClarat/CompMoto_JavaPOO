@@ -129,18 +129,16 @@ public class Moto {
 
     @Override
     public String toString() {
-        StringBuilder string = new StringBuilder();
-        string
-                .append("\nID : ").append(this.getId())
-                .append("\nMarque : ").append(this.getMarque())
-                .append("\nModèle : ").append(this.getModele())
-                .append("\nPuissance : ").append(this.getPuissance()).append("kW")
-                .append("\nConso : ").append(this.getConso()).append("l/100km")
-                .append("\nCapacité reservoir : ").append(this.getReserv()).append("l")
-                .append("\nAutonomie : ").append(this.getAutonomie()).append("km")
-                .append("\nPrix : ").append(this.getPrix()).append("€")
-                .append("\nNote personnelle : ").append(this.getNotePerso()).append("/100")
-                .append("\nNote Totale : ").append(this.getNoteTotale()).append("/100");
-        return string.toString();
+        String string = "\nID : " + this.getId() +
+                "\nMarque : " + this.getMarque() +
+                "\nModèle : " + this.getModele() +
+                "\nPuissance : " + this.getPuissance() + "kW" +
+                "\nConso : " + this.getConso() + "l/100km" +
+                "\nCapacité reservoir : " + this.getReserv() + "l" +
+                "\nAutonomie : " + this.getAutonomie() + "km" +
+                "\nPrix : " + this.getPrix() + "€" +
+                "\nNote personnelle : " + this.getNotePerso() + "/100" +
+                "\nNote Totale : " + this.getNoteTotale() + "/100";
+        return string;
     }
 }
