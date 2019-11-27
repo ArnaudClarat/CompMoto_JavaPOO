@@ -17,25 +17,32 @@ public class MainApp {
                 newMoto();
             }
             if (choice.equals("2")){
-                showMoto();
+                showMotos();
             }
             if (choice.equals("3")){
-                // TODO Créer removeMoto()
-            }
-            if (choice.equals("4")){
-                // TODO Créer bestMoto()
+                // TODO Créer bestMoto();
             }
         } while (!choice.equals("Q"));
     }
 
-    private static void showMoto() {
-        String choice = "a";
-        while (Arrays.asList("a","b","c").contains(choice)) {
+
+    private static void showMotos() {
+        String choice;
+        do {
             System.out.println(MotosManager.toString2());
-            System.out.println("Selectionner une moto ");
+            System.out.println("Selectionnez une moto pour voir les détails ou tapez R pour revenir au menu");
             Scanner scanner = new Scanner(System.in);
             choice = scanner.nextLine();
-        }
+            if (!choice.equals("R")) {
+                return;
+            } else {
+                showMoto(choice);
+            }
+        } while (Arrays.asList("a","b","c").contains("a"));
+    }
+
+    private static void showMoto(String id) {
+        System.out.println(MotosManager.getMoto(Long.parseLong(id)));
     }
 
     private static void newMoto() { // TODO Ajouter verification
@@ -81,8 +88,7 @@ public class MainApp {
         String menu = "\n\t\tMenu :  " +
                 "\n\t\t\t1 = Ajouter une moto" +
                 "\n\t\t\t2 = Afficher une moto" +
-                "\n\t\t\t3 = Supprimer une moto" +
-                "\n\t\t\t4 = Afficher la meilleure moto" +
+                "\n\t\t\t3 = Afficher la meilleure moto" +
                 "\n\t\t\tQ = Quitter le programme" +
                 "\n\n\t\tQue voulez-vous faire? ";
         System.out.println(menu);

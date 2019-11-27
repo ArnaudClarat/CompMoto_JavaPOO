@@ -2,12 +2,14 @@ package com.github.ArnaudClarat.CompMoto.pojo;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.function.Predicate;
 
 public class MotosManager {
     private static Set<Moto> motos = new HashSet<>();
 
     public static boolean addMoto(Moto moto){
         return motos.add(moto);
+        // TODO Gerer Database
     }
 
     public boolean containsMoto(Moto moto){
@@ -45,6 +47,11 @@ public class MotosManager {
 
     public static Set<Moto> getMotos(){
         return motos;
+    }
+
+    public static Moto getMoto(long id) {
+        Predicate<Moto> predicate = moto -> moto.getId() == id;
+        return motos.parallelStream().filter(predicate).findFirst().get();
     }
 
     public static String toString2() {

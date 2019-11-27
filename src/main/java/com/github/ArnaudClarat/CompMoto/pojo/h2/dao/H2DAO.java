@@ -7,7 +7,6 @@ import java.sql.SQLException;
 
 public abstract class H2DAO<T> implements DAO<T> {
     public Connection connection;
-
     {
         try {
             connection = H2Singleton.getInstance();

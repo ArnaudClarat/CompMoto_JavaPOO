@@ -3,6 +3,7 @@ package com.github.ArnaudClarat.CompMoto.pojo;
 import java.math.BigDecimal;
 
 public class Moto {
+    private long id;
     private Marque marque;
     private String modele;
     private BigDecimal puissance;
@@ -19,7 +20,7 @@ public class Moto {
         this.puissance = puissance;
         this.conso = conso;
         this.reserv = reserv;
-        this.autonomie = this.reserv.multiply(BigDecimal.valueOf(100)).divide(this.conso, 2);
+        this.autonomie = this.reserv.multiply(BigDecimal.valueOf(100)).divide(this.conso);
         this.prix = prix;
         this.notePerso = notePerso;
         setNoteTotale();
@@ -35,6 +36,10 @@ public class Moto {
         this.prix = prix;
         this.notePerso = notePerso;
         setNoteTotale();
+    }
+
+    public long getId() {
+        return id;
     }
 
     public Marque getMarque() {
@@ -118,6 +123,6 @@ public class Moto {
                 .add(noteAutonomie)
                 .add(notePrix)
                 .add(notePerso)
-                .divide(BigDecimal.valueOf(2));
+                .divide(BigDecimal.valueOf(2),2);
     }
 }
