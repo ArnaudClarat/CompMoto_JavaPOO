@@ -125,4 +125,21 @@ public class Moto {
                 .add(notePerso)
                 .divide(BigDecimal.valueOf(2),2);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder string = new StringBuilder();
+        string
+                .append("\nID : ").append(this.getId())
+                .append("\nMarque : ").append(this.getMarque())
+                .append("\nModèle : ").append(this.getModele())
+                .append("\nPuissance : ").append(this.getPuissance()).append("kW")
+                .append("\nConso : ").append(this.getConso()).append("l/100km")
+                .append("\nCapacité reservoir : ").append(this.getReserv()).append("l")
+                .append("\nAutonomie : ").append(this.getAutonomie()).append("km")
+                .append("\nPrix : ").append(this.getPrix()).append("€")
+                .append("\nNote personnelle : ").append(this.getNotePerso()).append("/100")
+                .append("\nNote Totale : ").append(this.getNoteTotale()).append("/100");
+        return string.toString();
+    }
 }

@@ -42,7 +42,7 @@ public class MainApp {
     }
 
     private static void showMoto(String id) {
-        System.out.println(MotosManager.getMoto(Long.parseLong(id)));
+        System.out.println(MotosManager.getMoto(Long.parseLong(id)).toString());
         // TODO Ajouter updateMoto();
         // TODO Ajouter removeMoto();
     }
