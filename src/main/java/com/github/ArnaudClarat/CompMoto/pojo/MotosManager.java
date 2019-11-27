@@ -9,7 +9,7 @@ public class MotosManager {
 
     public static boolean addMoto(Moto moto){
         return motos.add(moto);
-        // TODO Gerer Database
+        // TODO Gérer Database
     }
 
     public boolean containsMoto(Moto moto){
@@ -20,6 +20,7 @@ public class MotosManager {
         if(containsMoto(moto)){
             try {
                 return motos.remove(moto);
+                // TODO Gérer Database
             } catch (Exception e) {
                 e.printStackTrace();
                 return false;
@@ -34,6 +35,7 @@ public class MotosManager {
             try {
                 removeMoto(moto1);
                 addMoto(moto2);
+                // TODO Gérer Database
                 return true;
             } catch (Exception e) {
                 e.printStackTrace();
