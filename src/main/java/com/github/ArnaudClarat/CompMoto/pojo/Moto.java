@@ -1,6 +1,7 @@
 package com.github.ArnaudClarat.CompMoto.pojo;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class Moto {
     private long id;
@@ -20,7 +21,7 @@ public class Moto {
         this.puissance = puissance;
         this.conso = conso;
         this.reserv = reserv;
-        this.autonomie = this.reserv.multiply(BigDecimal.valueOf(100)).divide(this.conso);
+        this.autonomie = this.reserv.multiply(BigDecimal.valueOf(100)).divide(this.conso, RoundingMode.HALF_UP);
         this.prix = prix;
         this.notePerso = notePerso;
         setNoteTotale();

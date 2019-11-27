@@ -33,7 +33,7 @@ public class MainApp {
             System.out.println("Selectionnez une moto pour voir les détails ou tapez R pour revenir au menu");
             Scanner scanner = new Scanner(System.in);
             choice = scanner.nextLine();
-            if (!choice.equals("R")) {
+            if (choice.equals("R")) {
                 return;
             } else {
                 showMoto(choice);
@@ -52,23 +52,33 @@ public class MainApp {
         Scanner scanner = new Scanner(System.in);
         String tMarque = scanner.nextLine();
         while (!Marque.contains(tMarque)) {
-            System.out.print("La tMarque n'est pas correcte ");
+            System.out.print("La Marque n'est pas correcte ");
             tMarque = scanner.nextLine();
         }
         Marque marque = Marque.getMarque(tMarque);
-
 
         System.out.println("Modèle? ");
         String modele = scanner.nextLine();
 
         System.out.println("Puissance? en kW");
         String tPuissance = scanner.nextLine();
+        boolean test = false;
+        do {
+            try {
+                BigDecimal puissance = new BigDecimal(tPuissance);
+                if (puissance.compareTo(BigDecimal.valueOf(35)) < 0) {
+                    test = true;
+                }
+            } catch (Exception e) {
+                System.out.println("Veuillez rentrer un nombre correct. ");
+                tPuissance = scanner.nextLine();
+            }
+        } while (!test);
         BigDecimal puissance = new BigDecimal(tPuissance);
 
         System.out.println("Consomation? en l/100km");
         String tConso = scanner.nextLine();
         BigDecimal conso = new BigDecimal(tConso);
-
 
         System.out.println("Taille de reservoir? en l");
         String tReserv = scanner.nextLine();
