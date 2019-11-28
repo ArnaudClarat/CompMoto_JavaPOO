@@ -20,9 +20,15 @@ public class MainApp {
                 showMotos();
             }
             if (choice.equals("3")){
-                // TODO Créer bestMoto();
+                bestMoto();
             }
         } while (!choice.equals("Q"));
+    }
+
+    private static void bestMoto() {
+        String string = "Meilleure moto :" +
+                "\n"+MotosManager.getBestMoto();
+        System.out.println(string);
     }
 
 
@@ -47,7 +53,7 @@ public class MainApp {
         // TODO Ajouter removeMoto();
     }
 
-    private static void newMoto() { // TODO Ajouter verification
+    private static void newMoto() { // TODO Check toutes les verifications
         System.out.println("Marque? ");
         Scanner scanner = new Scanner(System.in);
         String tMarque = scanner.nextLine();
@@ -78,18 +84,66 @@ public class MainApp {
 
         System.out.println("Consomation? en l/100km");
         String tConso = scanner.nextLine();
+        test = false;
+        do {
+            try {
+                BigDecimal conso = new BigDecimal(tConso);
+                if (conso.compareTo(BigDecimal.valueOf(10)) < 0) {
+                    test = true;
+                }
+            } catch (Exception e) {
+                System.out.println("Veuillez rentrer un nombre correct. ");
+                tConso = scanner.nextLine();
+            }
+        } while (!test);
         BigDecimal conso = new BigDecimal(tConso);
 
         System.out.println("Taille de reservoir? en l");
         String tReserv = scanner.nextLine();
+        test = false;
+        do {
+            try {
+                BigDecimal reserv = new BigDecimal(tReserv);
+                if (reserv.compareTo(BigDecimal.valueOf(20)) < 0) {
+                    test = true;
+                }
+            } catch (Exception e) {
+                System.out.println("Veuillez rentrer un nombre correct. ");
+                tReserv = scanner.nextLine();
+            }
+        } while (!test);
         BigDecimal reserv = new BigDecimal(tReserv);
 
         System.out.println("Prix? ");
         String tPrix = scanner.nextLine();
+        test = false;
+        do {
+            try {
+                BigDecimal prix = new BigDecimal(tPrix);
+                if (prix.compareTo(BigDecimal.valueOf(7000)) < 0) {
+                    test = true;
+                }
+            } catch (Exception e) {
+                System.out.println("Veuillez rentrer un nombre correct. ");
+                tPrix = scanner.nextLine();
+            }
+        } while (!test);
         BigDecimal prix = new BigDecimal(tPrix);
 
         System.out.println("Note Personnelle? ");
         String tNotePerso = scanner.nextLine();
+        test = false;
+        do {
+            try {
+                BigDecimal notePerso = new BigDecimal(tNotePerso);
+                if (notePerso.compareTo(BigDecimal.valueOf(100)) < 0) {
+                    test = true;
+                }
+            } catch (Exception e) {
+                System.out.println("Veuillez rentrer un nombre correct. ");
+                tNotePerso = scanner.nextLine();
+            }
+        } while (!test);
         BigDecimal notePerso = new BigDecimal(tNotePerso);
 
         Moto newMoto = new Moto(marque, modele, puissance, conso, reserv, prix, notePerso);

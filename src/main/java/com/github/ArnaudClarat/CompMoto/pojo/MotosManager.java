@@ -1,6 +1,8 @@
 package com.github.ArnaudClarat.CompMoto.pojo;
 
+import java.util.Comparator;
 import java.util.HashSet;
+import java.util.NoSuchElementException;
 import java.util.Set;
 import java.util.function.Predicate;
 
@@ -10,6 +12,13 @@ public class MotosManager {
     public static boolean addMoto(Moto moto){
         return motos.add(moto);
         // TODO Gérer Database
+    }
+
+    public static Moto getBestMoto() {
+        return motos
+                .parallelStream()
+                .max(Comparator.comparing(Moto::getNoteTotale))
+                .orElseThrow(NoSuchElementException::new);
     }
 
     public boolean containsMoto(Moto moto){

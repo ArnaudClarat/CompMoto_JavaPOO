@@ -129,7 +129,7 @@ public class Moto {
 
     @Override
     public String toString() {
-        String string = "\nID : " + this.getId() +
+        return "\nID : " + this.getId() +
                 "\nMarque : " + this.getMarque() +
                 "\nModèle : " + this.getModele() +
                 "\nPuissance : " + this.getPuissance() + "kW" +
@@ -139,6 +139,5 @@ public class Moto {
                 "\nPrix : " + this.getPrix() + "€" +
                 "\nNote personnelle : " + this.getNotePerso() + "/100" +
                 "\nNote Totale : " + this.getNoteTotale() + "/100";
-        return string;
     }
 }
